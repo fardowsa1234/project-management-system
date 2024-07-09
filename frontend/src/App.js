@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import UserList from './components/UserList';
 import UserDetail from './components/UserDetail';
-import PostList from './components/PostList';
+import TaskList from './component/TaskList';
 import ProjectList from './component/ProjectList';
 import ProjectMembershipList from './components/ProjectMembershipList';
 
@@ -35,7 +35,7 @@ function App() {
             <Route exact path="/" component={Home} />
             <Route exact path="/users" component={UserList} />
             <Route path="/users/:id" component={UserDetail} />
-            <Route path="/posts" component={PostList} />
+            <Route path="/tasks" component={TaskList} />
             <Route path="/projects" component={ProjectList} />
             <Route path="/memberships" component={ProjectMembershipList} />
           </Switch>
