@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import UserList from './component/UserList';
 import UserDetail from './component/UserDetail';
 import TaskList from './component/TaskList';
@@ -21,7 +21,7 @@ function App() {
               <div className="flex space-x-7">
                 <div>
                   <Link to="/" className="flex items-center py-4 px-2">
-                    <span className="font-semibold text-gray-500 text-lg">My App</span>
+                    <span className="font-semibold text-gray-500 text-lg">Project Management System</span>
                   </Link>
                 </div>
                 <div className="hidden md:flex items-center space-x-1">
@@ -36,15 +36,15 @@ function App() {
         </nav>
 
         <div className="max-w-6xl mx-auto mt-8 px-4">
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/users" component={UserList} />
-            <Route path="/users/:id" component={UserDetail} />
-            <Route path="/tasks" component={TaskList} />
-            <Route path="/projects" component={ProjectList} />
-            <Route path="/memberships" component={ProjectMembershipList} />
-            <Route path="/add-user" render={() => <UserForm addUser={addUser} />} />
-          </Switch>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/users" element={<UserList />} />
+            <Route path="/users/:id" element={<UserDetail />} />
+            <Route path="/tasks" element={<TaskList />} />
+            <Route path="/projects" element={<ProjectList />} />
+            <Route path="/memberships" element={<ProjectMembershipList />} />
+            <Route path="/add-user" element={<UserForm addUser={addUser} />} />
+          </Routes>
         </div>
       </div>
     </Router>
