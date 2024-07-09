@@ -1,12 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
-import UserList from './component/UserList';
-import UserDetail from './component/UserDetail';
-import TaskList from './component/TaskList'; 
-import PostList from './component/PostList'; 
-import ProjectList from './component/ProjectList'; 
-import ProjectMembershipList from './component/ProjectMembershipList'; 
-import UserForm from './component/UserForm'; 
+import UserList from './components/UserList';
+import UserDetail from './components/UserDetail';
+import TaskList from './components/TaskList'; 
+import ProjectList from './components/ProjectList'; 
+import ProjectMembershipList from './components/ProjectMembershipList'; 
+import UserForm from './components/UserForm'; 
 
 function App() {
   const addUser = (user) => {
@@ -27,7 +26,7 @@ function App() {
                 </div>
                 <div className="hidden md:flex items-center space-x-1">
                   <Link to="/users" className="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Users</Link>
-                  <Link to="/posts" className="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Posts</Link>
+                  <Link to="/tasks" className="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Tasks</Link>
                   <Link to="/projects" className="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Projects</Link>
                   <Link to="/memberships" className="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Memberships</Link>
                 </div>
@@ -44,7 +43,6 @@ function App() {
             <Route path="/tasks" component={TaskList} />
             <Route path="/projects" component={ProjectList} />
             <Route path="/memberships" component={ProjectMembershipList} />
-            {/* Route for UserForm */}
             <Route path="/add-user" render={() => <UserForm addUser={addUser} />} />
           </Switch>
         </div>
@@ -57,7 +55,7 @@ function Home() {
   return (
     <div className="text-center">
       <h1 className="text-4xl font-bold text-gray-800 mb-4">Welcome to My App</h1>
-      <p className="text-xl text-gray-600">Manage your users, posts, projects, and memberships all in one place.</p>
+      <p className="text-xl text-gray-600">Manage your users, tasks, projects, and memberships all in one place.</p>
     </div>
   );
 }
