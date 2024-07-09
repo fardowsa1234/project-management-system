@@ -1,12 +1,18 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
-import UserList from './components/UserList';
-import UserDetail from './components/UserDetail';
-import PostList from './components/PostList';
+import UserList from './component/UserList';
+import UserDetail from './component/UserDetail';
+import PostList from './component/PostList';
 import ProjectList from './component/ProjectList';
-import ProjectMembershipList from './components/ProjectMembershipList';
+import ProjectMembershipList from './component/ProjectMembershipList';
+import UserForm from './component/UserForm';
 
 function App() {
+  const addUser = (user) => {
+    
+    console.log('Adding user:', user);
+  };
+
   return (
     <Router>
       <div className="min-h-screen bg-gray-100">
@@ -38,6 +44,8 @@ function App() {
             <Route path="/posts" component={PostList} />
             <Route path="/projects" component={ProjectList} />
             <Route path="/memberships" component={ProjectMembershipList} />
+            {/* Route for UserForm */}
+            <Route path="/add-user" render={() => <UserForm addUser={addUser} />} />
           </Switch>
         </div>
       </div>
