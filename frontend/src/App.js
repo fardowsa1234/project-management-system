@@ -1,11 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
-import UserList from './components/UserList';
-import UserDetail from './components/UserDetail';
-import TaskList from './components/TaskList';
-import ProjectList from './components/ProjectList';
-import ProjectMembershipList from './components/ProjectMembershipList';
-import UserForm from './components/UserForm';
+import UserList from './component/UserList';
+import UserDetail from './component/UserDetail';
+import TaskList from './component/TaskList';
+import ProjectList from './component/ProjectList';
+import ProjectMembershipList from './component/ProjectMembershipList';
+import UserForm from './component/UserForm';
 
 function App() {
   const addUser = (user) => {
