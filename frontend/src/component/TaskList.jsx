@@ -4,7 +4,7 @@ function TaskList() {
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
-    // Fetch posts
+    // Fetch tasks
   }, []);
 
   return (
