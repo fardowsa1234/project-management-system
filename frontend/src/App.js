@@ -2,14 +2,14 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import UserList from './component/UserList';
 import UserDetail from './component/UserDetail';
-import PostList from './component/PostList';
-import ProjectList from './component/ProjectList';
-import ProjectMembershipList from './component/ProjectMembershipList';
-import UserForm from './component/UserForm';
+import TaskList from './component/TaskList'; 
+import PostList from './component/PostList'; 
+import ProjectList from './component/ProjectList'; 
+import ProjectMembershipList from './component/ProjectMembershipList'; 
+import UserForm from './component/UserForm'; 
 
 function App() {
   const addUser = (user) => {
-    
     console.log('Adding user:', user);
   };
 
@@ -41,7 +41,7 @@ function App() {
             <Route exact path="/" component={Home} />
             <Route exact path="/users" component={UserList} />
             <Route path="/users/:id" component={UserDetail} />
-            <Route path="/posts" component={PostList} />
+            <Route path="/tasks" component={TaskList} />
             <Route path="/projects" component={ProjectList} />
             <Route path="/memberships" component={ProjectMembershipList} />
             {/* Route for UserForm */}
