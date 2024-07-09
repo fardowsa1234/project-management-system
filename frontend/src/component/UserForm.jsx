@@ -2,7 +2,7 @@ import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
-const UserForm = () => {
+const UserForm = ({ addUser }) => {
   const initialValues = {
     username: '',
     email: '',
@@ -16,32 +16,47 @@ const UserForm = () => {
   });
 
   const handleSubmit = (values, { setSubmitting }) => {
-    // Handle form submission
-    console.log(values);
-    setSubmitting(false);
+    fetch('/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(values),
+    })
+      .then(response => response.json())
+      .then(data => {
+        addUser(data); // Assuming addUser is a function that adds the user to the state
+        setSubmitting(false);
+      })
+      .catch(error => {
+        console.error('Error adding user:', error);
+        setSubmitting(false);
+      });
   };
 
   return (
-    <div className="max-w-md mx-auto mt-8 p-4 bg-white shadow-md rounded-lg">
+    <div className="container mx-auto p-4">
       <h2 className="text-2xl font-bold mb-4">Create User</h2>
       <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
-        <Form>
+        <Form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
           <div className="mb-4">
-            <label htmlFor="username" className="block text-gray-700">Username</label>
-            <Field type="text" id="username" name="username" className="mt-1 p-2 block w-full border rounded-md" />
-            <ErrorMessage name="username" component="div" className="text-red-500 text-sm mt-1" />
+            <label htmlFor="username" className="block text-gray-700 text-sm font-bold mb-2">Username</label>
+            <Field type="text" id="username" name="username" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+            <ErrorMessage name="username" component="div" className="text-red-500 text-xs italic" />
           </div>
           <div className="mb-4">
-            <label htmlFor="email" className="block text-gray-700">Email</label>
-            <Field type="email" id="email" name="email" className="mt-1 p-2 block w-full border rounded-md" />
-            <ErrorMessage name="email" component="div" className="text-red-500 text-sm mt-1" />
+            <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2">Email</label>
+            <Field type="email" id="email" name="email" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+            <ErrorMessage name="email" component="div" className="text-red-500 text-xs italic" />
           </div>
           <div className="mb-4">
-            <label htmlFor="password" className="block text-gray-700">Password</label>
-            <Field type="password" id="password" name="password" className="mt-1 p-2 block w-full border rounded-md" />
-            <ErrorMessage name="password" component="div" className="text-red-500 text-sm mt-1" />
+            <label htmlFor="password" className="block text-gray-700 text-sm font-bold mb-2">Password</label>
+            <Field type="password" id="password" name="password" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+            <ErrorMessage name="password" component="div" className="text-red-500 text-xs italic" />
           </div>
-          <button type="submit" className="w-full py-2 px-4 bg-blue-500 text-white rounded-md hover:bg-blue-600">Submit</button>
+          <div className="flex items-center justify-between">
+            <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Submit</button>
+          </div>
         </Form>
       </Formik>
     </div>
