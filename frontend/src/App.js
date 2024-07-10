@@ -21,7 +21,7 @@ function App() {
               <div className="flex space-x-7">
                 <div>
                   <Link to="/" className="flex items-center py-4 px-2">
-                    <span className="font-semibold text-gray-500 text-lg">Project Management System</span>
+                    <span className="font-semibold text-gray-500 text-lg">My App</span>
                   </Link>
                 </div>
                 <div className="hidden md:flex items-center space-x-1">
@@ -29,6 +29,7 @@ function App() {
                   <Link to="/tasks" className="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Tasks</Link>
                   <Link to="/projects" className="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Projects</Link>
                   <Link to="/memberships" className="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Memberships</Link>
+                  <Link to="/add-user" className="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Add User</Link>
                 </div>
               </div>
             </div>
@@ -38,7 +39,7 @@ function App() {
         <div className="max-w-6xl mx-auto mt-8 px-4">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/users" element={<UserList />} />
+            <Route path="/users" element={<Users addUser={addUser} />} />
             <Route path="/users/:id" element={<UserDetail />} />
             <Route path="/tasks" element={<TaskList />} />
             <Route path="/projects" element={<ProjectList />} />
@@ -56,6 +57,15 @@ function Home() {
     <div className="text-center">
       <h1 className="text-4xl font-bold text-gray-800 mb-4">Welcome to My App</h1>
       <p className="text-xl text-gray-600">Manage your users, tasks, projects, and memberships all in one place.</p>
+    </div>
+  );
+}
+
+function Users({ addUser }) {
+  return (
+    <div>
+      <UserForm addUser={addUser} />
+      <UserList />
     </div>
   );
 }

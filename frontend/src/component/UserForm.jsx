@@ -16,7 +16,7 @@ const UserForm = ({ addUser }) => {
   });
 
   const handleSubmit = (values, { setSubmitting }) => {
-    fetch('/users', {
+    fetch('/signup', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
