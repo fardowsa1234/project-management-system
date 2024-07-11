@@ -14,13 +14,17 @@ const UserDetail = () => {
   }, [id]);
 
   if (!user) {
-    return <div>Loading...</div>;
+    return (
+      <div className="container mt-4"> {/* Bootstrap class for margin top */}
+        Loading...
+      </div>
+    );
   }
 
   return (
-    <div className="container mx-auto p-4">
-      <h2 className="text-2xl font-bold mb-4">User Detail</h2>
-      <div className="bg-white shadow-md rounded-lg p-4">
+    <div className="container mt-4"> {/* Bootstrap class for margin top */}
+      <h2 className="text-center text-2xl font-weight-bold mb-4">User Detail</h2> {/* Bootstrap classes for centering, heading size, and font weight */}
+      <div className="bg-white shadow-sm rounded p-4"> {/* Bootstrap classes for background, shadow, rounded corners, and padding */}
         <p><strong>Username:</strong> {user.username}</p>
         <p><strong>Email:</strong> {user.email}</p>
         {/* Display other user details as needed */}

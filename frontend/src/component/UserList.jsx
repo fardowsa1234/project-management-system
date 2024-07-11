@@ -1,33 +1,32 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
-const UserList = () => {
-  const [users, setUsers] = useState([]);
+const UserDetail = () => {
+  const { id } = useParams();
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
-    // Fetch user data from the API
-    fetch('/users')
+    // Fetch user details
+    fetch(`/users/${id}`)
       .then(response => response.json())
-      .then(data => setUsers(data))
-      .catch(error => console.error('Error fetching users:', error));
-  }, []);
+      .then(data => setUser(data))
+      .catch(error => console.error('Error fetching user details:', error));
+  }, [id]);
+
+  if (!user) {
+    return <div className="container mt-4">Loading...</div>; // Bootstrap class for margin top
+  }
 
   return (
-    <div className="container mx-auto p-4">
-      <h2 className="text-2xl font-bold mb-4">User List</h2>
-      <div className="bg-white shadow-md rounded-lg p-4">
-        {users.map(user => (
-          <Link
-            key={user.id}
-            to={`/users/${user.id}`}
-            className="block p-4 border-b border-gray-200 hover:bg-gray-100"
-          >
-            {user.username}
-          </Link>
-        ))}
+    <div className="container mt-4"> {/* Bootstrap class for margin top */}
+      <h2 className="text-2xl font-weight-bold mb-4">User Detail</h2> {/* Bootstrap class for font weight */}
+      <div className="bg-white shadow-sm rounded p-4"> {/* Bootstrap classes for shadow and padding */}
+        <p><strong>Username:</strong> {user.username}</p>
+        <p><strong>Email:</strong> {user.email}</p>
+        {/* Display other user details as needed */}
       </div>
     </div>
   );
 };
 
-export default UserList;
+export default UserDetail;

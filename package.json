@@ -1,6 +1,8 @@
 {
   "dependencies": {
-    "color": "^4.2.3"
+    "bootstrap": "^5.3.3",
+    "color": "^4.2.3",
+    "tailwind": "^4.0.0"
   },
   "devDependencies": {
     "@tailwindcss/custom-forms": "github:tailwindcss/custom-forms",

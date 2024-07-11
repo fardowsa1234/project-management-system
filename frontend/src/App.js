@@ -17,19 +17,13 @@ function App() {
       <div className="min-h-screen bg-gray-100">
         <nav className="bg-white shadow-lg">
           <div className="max-w-6xl mx-auto px-4">
-            <div className="flex justify-between">
-              <div className="flex space-x-7">
-                <div>
-                  <Link to="/" className="flex items-center py-4 px-2">
-                    <span className="font-semibold text-gray-500 text-lg">Project Management System</span>
-                  </Link>
-                </div>
-                <div className="hidden md:flex items-center space-x-1">
-                  <Link to="/users" className="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Users</Link>
-                  <Link to="/tasks" className="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Tasks</Link>
-                  <Link to="/projects" className="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Projects</Link>
-                  <Link to="/memberships" className="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Memberships</Link>
-                </div>
+            <div className="flex justify-between items-center py-4">
+              <Link to="/" className="font-semibold text-gray-500 text-lg">Project Management System</Link>
+              <div className="hidden md:flex items-center space-x-4">
+                <NavLink to="/users">Users</NavLink>
+                <NavLink to="/tasks">Tasks</NavLink>
+                <NavLink to="/projects">Projects</NavLink>
+                <NavLink to="/memberships">Memberships</NavLink>
               </div>
             </div>
           </div>
@@ -50,6 +44,10 @@ function App() {
     </Router>
   );
 }
+
+const NavLink = ({ to, children }) => (
+  <Link to={to} className="text-gray-500 font-semibold hover:text-green-500 transition duration-300">{children}</Link>
+);
 
 function Home() {
   return (

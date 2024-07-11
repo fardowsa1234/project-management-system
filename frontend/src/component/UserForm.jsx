@@ -35,29 +35,33 @@ const UserForm = ({ addUser }) => {
   };
 
   return (
-    <div className="container mx-auto p-4">
-      <h2 className="text-2xl font-bold mb-4">Create User</h2>
+    <div className="container mt-4">
+      <h2 className="text-center mb-4">Create User</h2>
       <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
-        <Form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-          <div className="mb-4">
-            <label htmlFor="username" className="block text-gray-700 text-sm font-bold mb-2">Username</label>
-            <Field type="text" id="username" name="username" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
-            <ErrorMessage name="username" component="div" className="text-red-500 text-xs italic" />
-          </div>
-          <div className="mb-4">
-            <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2">Email</label>
-            <Field type="email" id="email" name="email" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
-            <ErrorMessage name="email" component="div" className="text-red-500 text-xs italic" />
-          </div>
-          <div className="mb-4">
-            <label htmlFor="password" className="block text-gray-700 text-sm font-bold mb-2">Password</label>
-            <Field type="password" id="password" name="password" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
-            <ErrorMessage name="password" component="div" className="text-red-500 text-xs italic" />
-          </div>
-          <div className="flex items-center justify-between">
-            <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Submit</button>
-          </div>
-        </Form>
+        {({ isSubmitting }) => (
+          <Form className="bg-light p-4 rounded shadow-sm">
+            <div className="mb-3">
+              <label htmlFor="username" className="form-label">Username</label>
+              <Field type="text" id="username" name="username" className="form-control" />
+              <ErrorMessage name="username" component="div" className="text-danger" />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="email" className="form-label">Email</label>
+              <Field type="email" id="email" name="email" className="form-control" />
+              <ErrorMessage name="email" component="div" className="text-danger" />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="password" className="form-label">Password</label>
+              <Field type="password" id="password" name="password" className="form-control" />
+              <ErrorMessage name="password" component="div" className="text-danger" />
+            </div>
+            <div className="d-grid gap-2">
+              <button type="submit" className="btn btn-primary" disabled={isSubmitting}>
+                {isSubmitting ? 'Submitting...' : 'Submit'}
+              </button>
+            </div>
+          </Form>
+        )}
       </Formik>
     </div>
   );
