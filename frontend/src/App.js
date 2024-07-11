@@ -1,5 +1,7 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, NavLink } from 'react-router-dom';
+import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import UserList from './component/UserList';
 import UserDetail from './component/UserDetail';
 import TaskList from './component/TaskList';
@@ -14,32 +16,37 @@ function App() {
 
   return (
     <Router>
-      <div className="min-h-screen bg-gray-100">
-        <nav className="bg-white shadow-lg">
-          <div className="max-w-6xl mx-auto px-4">
-            <div className="flex justify-between">
-              <div className="flex space-x-7">
-                <div>
-                  <Link to="/" className="flex items-center py-4 px-2">
-                    <span className="font-semibold text-gray-500 text-lg">My App</span>
-                  </Link>
-                </div>
-                <div className="hidden md:flex items-center space-x-1">
-                  <Link to="/users" className="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Users</Link>
-                  <Link to="/tasks" className="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Tasks</Link>
-                  <Link to="/projects" className="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Projects</Link>
-                  <Link to="/memberships" className="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Memberships</Link>
-                  <Link to="/add-user" className="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Add User</Link>
-                </div>
-              </div>
+      <div className="min-vh-100 bg-custom-light"> {/* Use custom class bg-custom-light */}
+        <nav className="navbar navbar-expand-lg navbar-light bg-light shadow-lg">
+          <div className="container">
+            <NavLink to="/" className="navbar-brand">My App</NavLink>
+            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span className="navbar-toggler-icon"></span>
+            </button>
+            <div className="collapse navbar-collapse" id="navbarNav">
+              <ul className="navbar-nav ms-auto">
+               
+                <li className="nav-item">
+                  <NavLink to="/tasks" className="nav-link">Tasks</NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink to="/projects" className="nav-link">Projects</NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink to="/memberships" className="nav-link">Memberships</NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink to="/add-user" className="nav-link">Add User</NavLink>
+                </li>
+              </ul>
             </div>
           </div>
         </nav>
 
-        <div className="max-w-6xl mx-auto mt-8 px-4">
+        <div className="container mt-4">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/users" element={<Users addUser={addUser} />} />
+            <Route path="/users" element={<UserList />} />
             <Route path="/users/:id" element={<UserDetail />} />
             <Route path="/tasks" element={<TaskList />} />
             <Route path="/projects" element={<ProjectList />} />
@@ -55,17 +62,8 @@ function App() {
 function Home() {
   return (
     <div className="text-center">
-      <h1 className="text-4xl font-bold text-gray-800 mb-4">Welcome to My App</h1>
-      <p className="text-xl text-gray-600">Manage your users, tasks, projects, and memberships all in one place.</p>
-    </div>
-  );
-}
-
-function Users({ addUser }) {
-  return (
-    <div>
-      <UserForm addUser={addUser} />
-      <UserList />
+      <h1 className="display-4">Welcome to My App</h1>
+      <p className="lead">Manage your users, tasks, projects, and memberships all in one place.</p>
     </div>
   );
 }

@@ -32,13 +32,13 @@ function TaskList() {
   return (
     <div>
       <h2 className="text-2xl font-bold text-gray-800 mb-4">Tasks</h2>
-      <ul className="bg-white shadow overflow-hidden sm:rounded-md mb-4">
+      <ul className="list-group mb-4">
         {tasks.map(task => (
-          <li key={task.id} className="border-b border-gray-200 last:border-b-0">
-            <div className="px-4 py-4 sm:px-6">
-              <div className="flex items-center justify-between">
-                <h3 className="text-lg leading-6 font-medium text-gray-900">{task.title}</h3>
-                <p className="mt-1 max-w-2xl text-sm text-gray-500">Author: {task.author}</p>
+          <li key={task.id} className="list-group-item border-gray-200">
+            <div className="px-4 py-4">
+              <div className="d-flex justify-content-between">
+                <h3 className="text-lg font-weight-bold text-gray-900">{task.title}</h3>
+                <p className="mt-1 text-sm text-muted">Author: {task.author}</p>
               </div>
               <p className="mt-1 text-sm text-gray-600">{task.content.substring(0, 150)}...</p>
             </div>
@@ -72,45 +72,46 @@ function TaskForm({ onTaskAdded }) {
       onSubmit={handleSubmit}
     >
       {({ isSubmitting }) => (
-        <Form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-          <div className="mb-4">
-            <label htmlFor="title" className="block text-gray-700 text-sm font-bold mb-2">
+        <Form className="bg-white shadow-sm rounded px-4 pt-4 pb-4 mb-4">
+          <div className="mb-3">
+            <label htmlFor="title" className="form-label text-gray-700">
               Title
             </label>
             <Field
               type="text"
               name="title"
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="form-control"
             />
-            <ErrorMessage name="title" component="div" className="text-red-500 text-xs italic" />
+            <ErrorMessage name="title" component="div" className="text-danger small" />
           </div>
-          <div className="mb-4">
-            <label htmlFor="author" className="block text-gray-700 text-sm font-bold mb-2">
+          <div className="mb-3">
+            <label htmlFor="author" className="form-label text-gray-700">
               Author
             </label>
             <Field
               type="text"
               name="author"
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="form-control"
             />
-            <ErrorMessage name="author" component="div" className="text-red-500 text-xs italic" />
+            <ErrorMessage name="author" component="div" className="text-danger small" />
           </div>
-          <div className="mb-4">
-            <label htmlFor="content" className="block text-gray-700 text-sm font-bold mb-2">
+          <div className="mb-3">
+            <label htmlFor="content" className="form-label text-gray-700">
               Content
             </label>
             <Field
               as="textarea"
               name="content"
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="form-control"
+              rows="3"
             />
-            <ErrorMessage name="content" component="div" className="text-red-500 text-xs italic" />
+            <ErrorMessage name="content" component="div" className="text-danger small" />
           </div>
-          <div className="flex items-center justify-between">
+          <div className="d-flex justify-content-end">
             <button
               type="submit"
               disabled={isSubmitting}
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              className="btn btn-primary"
             >
               {isSubmitting ? 'Submitting...' : 'Add Task'}
             </button>
