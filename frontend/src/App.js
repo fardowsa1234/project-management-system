@@ -14,22 +14,22 @@ function App() {
 
   return (
     <Router>
-      <div className="min-h-screen bg-gray-100">
-        <nav className="bg-white shadow-lg">
-          <div className="max-w-6xl mx-auto px-4">
-            <div className="flex justify-between items-center py-4">
-              <Link to="/" className="font-semibold text-gray-500 text-lg">Project Management System</Link>
-              <div className="hidden md:flex items-center space-x-4">
+      <div className="container-fluid bg-light min-vh-100">
+        <nav className="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+          <div className="container">
+            <Link to="/" className="navbar-brand text-dark font-weight-bold" style={{ fontSize: '20px', fontFamily: 'Playfair Display' }}>Project Management System</Link>
+            <div className="collapse navbar-collapse">
+              <ul className="navbar-nav ml-auto">
                 <NavLink to="/users">Users</NavLink>
                 <NavLink to="/tasks">Tasks</NavLink>
                 <NavLink to="/projects">Projects</NavLink>
                 <NavLink to="/memberships">Memberships</NavLink>
-              </div>
+              </ul>
             </div>
           </div>
         </nav>
 
-        <div className="max-w-6xl mx-auto mt-8 px-4">
+        <div className="container mt-4">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/users" element={<UserList />} />
@@ -46,14 +46,16 @@ function App() {
 }
 
 const NavLink = ({ to, children }) => (
-  <Link to={to} className="text-gray-500 font-semibold hover:text-green-500 transition duration-300">{children}</Link>
+  <li className="nav-item">
+    <Link to={to} className="nav-link text-dark font-weight-bold" style={{ fontSize: '20px' }}>{children}</Link>
+  </li>
 );
 
 function Home() {
   return (
-    <div className="text-center">
-      <h1 className="text-4xl font-bold text-gray-800 mb-4">Welcome to My App</h1>
-      <p className="text-xl text-gray-600">Manage your users, tasks, projects, and memberships all in one place.</p>
+    <div className="text-center mt-5">
+      <h1 className="text-dark display-4 font-weight-bold mb-4">Welcome to My App</h1>
+      <p className="lead text-secondary" style={{ fontSize: '20px', fontFamily: 'Playfair Display' }}>Manage your users, tasks, projects, and memberships all in one place.</p>
     </div>
   );
 }

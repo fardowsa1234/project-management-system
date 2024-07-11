@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { motion, useTime, useTransform } from 'framer-motion'; // Ensure this import statement is correct
 
 function ProjectMembershipList() {
   const [memberships, setMemberships] = useState([]);
   const [projects, setProjects] = useState([]);
-  const [users, setUsers] = useState([]); 
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
     // Fetch memberships
@@ -36,8 +36,11 @@ function ProjectMembershipList() {
       .catch(error => console.error('Error fetching memberships:', error));
   };
 
+  const time = useTime();
+  const rotate = useTransform(time, [0, 4000], [0, 360], { clamp: false });
+
   return (
-    <div className="container">
+    <div className="container mt-5">
       <h2 className="text-2xl font-bold text-gray-800 mb-4">Project Memberships</h2>
       <div className="row">
         <div className="col-md-6">
@@ -57,12 +60,23 @@ function ProjectMembershipList() {
           </ul>
         </div>
         <div className="col-md-6">
-          <h3 className="text-xl font-semibold mb-4">Add New Membership</h3>
-          <ProjectMembershipForm
-            projects={projects}
-            users={users}
-            onMembershipAdded={refreshMemberships}
-          />
+          <div className="card">
+            <div className="card-body">
+              <h3 className="text-xl font-semibold mb-4">Add New Membership</h3>
+              <ProjectMembershipForm
+                projects={projects}
+                users={users}
+                onMembershipAdded={refreshMemberships}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="row mt-5">
+        <div className="col-md-6 order-md-last">
+          <motion.div className="example-container d-flex justify-content-center align-items-center" style={{ width: 200, height: 200 }}>
+            <motion.div style={{ rotate, width: 50, height: 50, backgroundColor: 'blue' }} />
+          </motion.div>
         </div>
       </div>
     </div>
@@ -150,9 +164,15 @@ function ProjectMembershipForm({ projects, users, onMembershipAdded }) {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="btn btn-primary"
+              className={`btn btn-primary ${isSubmitting ? 'disabled' : ''}`}
             >
-              {isSubmitting ? 'Submitting...' : 'Add Membership'}
+              {isSubmitting ? (
+                <div className="spinner-border spinner-border-sm" role="status">
+                  <span className="visually-hidden">Loading...</span>
+                </div>
+              ) : (
+                'Add Membership'
+              )}
             </button>
           </div>
         </Form>
