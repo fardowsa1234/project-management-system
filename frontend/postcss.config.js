@@ -1,7 +1,4 @@
-export const plugins = [
-  require('tailwindcss'),
-  require('autoprefixer'),
-  require('cssnano')({
-    preset: 'default',
-  }),
-];
+export const plugins = {
+  tailwindcss: {},
+  autoprefixer: {},
+};

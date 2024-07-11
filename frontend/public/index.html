@@ -3,35 +3,199 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Project Management System</title>
-    
-    <!-- Favicon -->
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    
-    <!-- Meta tags for SEO and social media -->
-    <meta name="description" content="A full-stack project with React frontend and Flask backend">
-    <meta name="theme-color" content="#000000" />
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://yourwebsite.com/"> <!--After deployment the URL will be placed here-->
-    <meta property="og:title" content="Full-Stack Project">
-    <meta property="og:description" content="A full-stack project with React frontend and Flask backend">
-    <meta property="og:image" content="%PUBLIC_URL%/og-image.jpg">
-
-    <!-- Apple Touch Icon -->
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    
-    <!-- Web App Manifest -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This div with id="root" is where your React app will be mounted.
-      You don't need to add any content here.
-    -->
+<body class="bg-gray-100 min-h-screen">
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between">
+                <div class="flex space-x-7">
+                    <div>
+                        <a href="#" class="flex items-center py-4 px-2">
+                            <span class="font-semibold text-gray-500 text-lg">Project Management System</span>
+                        </a>
+                    </div>
+                    <div class="hidden md:flex items-center space-x-1">
+                        <a href="#" class="py-4 px-2 text-green-500 border-b-4 border-green-500 font-semibold">Users</a>
+                        <a href="#" class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Posts</a>
+                        <a href="#" class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Projects</a>
+                        <a href="#" class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Memberships</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-6xl mx-auto mt-8 px-4">
+        <!-- Users Section -->
+        <div class="mb-12">
+            <h1 class="text-3xl font-bold text-gray-800 mb-6">Users</h1>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h2 class="text-xl font-semibold mb-4">User List</h2>
+                    <ul class="bg-white shadow-md rounded-lg overflow-hidden">
+                        <li class="border-b last:border-b-0">
+                            <a href="#" class="block px-4 py-3 hover:bg-gray-50 transition duration-150 ease-in-out">
+                                John Doe
+                            </a>
+                        </li>
+                        <li class="border-b last:border-b-0">
+                            <a href="#" class="block px-4 py-3 hover:bg-gray-50 transition duration-150 ease-in-out">
+                                Jane Smith
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h2 class="text-xl font-semibold mb-4">Add New User</h2>
+                    <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                        <div class="mb-4">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
+                                Username
+                            </label>
+                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Username">
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
+                                Email
+                            </label>
+                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="Email">
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                                Add User
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Posts Section -->
+        <div class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Tasks</h2>
+            <ul class="bg-white shadow overflow-hidden sm:rounded-md">
+                <li class="border-b border-gray-200 last:border-b-0">
+                    <div class="px-4 py-4 sm:px-6">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-lg leading-6 font-medium text-gray-900">First Blog Post</h3>
+                            <p class="mt-1 max-w-2xl text-sm text-gray-500">Author: John Doe</p>
+                        </div>
+                        <p class="mt-1 text-sm text-gray-600">This is the beginning of the first blog post...</p>
+                    </div>
+                </li>
+                <li class="border-b border-gray-200 last:border-b-0">
+                    <div class="px-4 py-4 sm:px-6">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-lg leading-6 font-medium text-gray-900">Second Blog Post</h3>
+                            <p class="mt-1 max-w-2xl text-sm text-gray-500">Author: Jane Smith</p>
+                        </div>
+                        <p class="mt-1 text-sm text-gray-600">Here's an introduction to the second blog post...</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Projects Section -->
+        <div class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Projects</h2>
+            <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+                <div class="bg-white overflow-hidden shadow rounded-lg">
+                    <div class="px-4 py-5 sm:p-6">
+                        <h3 class="text-lg leading-6 font-medium text-gray-900">Project Alpha</h3>
+                        <p class="mt-1 max-w-2xl text-sm text-gray-500">This is a description for Project Alpha.</p>
+                    </div>
+                    <div class="bg-gray-50 px-4 py-4 sm:px-6">
+                        <span class="text-sm font-medium text-gray-500">Members: 3</span>
+                    </div>
+                </div>
+                <div class="bg-white overflow-hidden shadow rounded-lg">
+                    <div class="px-4 py-5 sm:p-6">
+                        <h3 class="text-lg leading-6 font-medium text-gray-900">Project Beta</h3>
+                        <p class="mt-1 max-w-2xl text-sm text-gray-500">Here's what Project Beta is all about.</p>
+                    </div>
+                    <div class="bg-gray-50 px-4 py-4 sm:px-6">
+                        <span class="text-sm font-medium text-gray-500">Members: 2</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project Memberships Section -->
+        <div>
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Project Memberships</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <ul class="bg-white shadow overflow-hidden sm:rounded-md">
+                        <li class="border-b border-gray-200 last:border-b-0">
+                            <div class="px-4 py-4 sm:px-6">
+                                <div class="flex items-center justify-between">
+                                    <p class="text-sm font-medium text-indigo-600 truncate">
+                                        John Doe - Project Alpha
+                                    </p>
+                                    <div class="ml-2 flex-shrink-0 flex">
+                                        <p class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                            Developer
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="border-b border-gray-200 last:border-b-0">
+                            <div class="px-4 py-4 sm:px-6">
+                                <div class="flex items-center justify-between">
+                                    <p class="text-sm font-medium text-indigo-600 truncate">
+                                        Jane Smith - Project Beta
+                                    </p>
+                                    <div class="ml-2 flex-shrink-0 flex">
+                                        <p class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                            Manager
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Add New Membership</h3>
+                    <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                        <div class="mb-4">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="user">
+                                User
+                            </label>
+                            <select class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="user">
+                                <option>Select a user</option>
+                                <option>John Doe</option>
+                                <option>Jane Smith</option>
+                            </select>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="project">
+                                Project
+                            </label>
+                            <select class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="project">
+                                <option>Select a project</option>
+                                <option>Project Alpha</option>
+                                <option>Project Beta</option>
+                            </select>
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="role">
+                                Role
+                            </label>
+                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="role" type="text" placeholder="Role">
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                                Add Membership
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

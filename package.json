@@ -3,6 +3,7 @@
     "color": "^4.2.3"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@tailwindcss/custom-forms": "github:tailwindcss/custom-forms",
     "tailwindcss-multi-theme": "^1.0.4"
   }
